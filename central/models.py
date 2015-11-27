@@ -13,13 +13,12 @@ class Plan(models.Model):
 
 class Dueno(models.Model):
 	nombre = models.CharField(max_length=20)
+	usuario = models.ForeignKey('auth.User')
 	rut = models.CharField(max_length = 9)
 	email = models.EmailField()
 	direccion = models.CharField(max_length = 100)
 	comuna = models.CharField(max_length = 30)
 	phone = models.CharField(max_length=20)
-	usuario = models.CharField(max_length=20)
-	contrasena = models.CharField(max_length=20)
 	Tipo_Usuario = (
 			('C', 'Cliente'),
 			('V', 'Veterinario'),
@@ -69,8 +68,7 @@ class HistorialCompra(models.Model):
 class Veterinario(models.Model):
 	nombre = models.CharField(max_length = 20)
 	especialidad = models.CharField(max_length = 30)
-	usuario = models.CharField(max_length=20)
-	contrasena = models.CharField(max_length=20)
+	usuario = models.ForeignKey('auth.User')
 	Tipo_de_Usuario = models.CharField(max_length=20)
 
 	def __unicode__(self):

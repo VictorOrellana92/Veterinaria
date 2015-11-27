@@ -7,6 +7,9 @@ urlpatterns = [
 		url(r'^$',  'django.contrib.auth.views.login',
 		{'template_name': 'login.html'}, name='login'),
 
+		
+		url(r'^redirecciona/$', views.base_redirect, name = 'base_redirect'),
+
 		url(r'cerrar/$',  'django.contrib.auth.views.logout_then_login', name='logout'),
 
 		url(r'^inicio/$', views.mostrar_mascota, name = 'mostrar_mascota'),

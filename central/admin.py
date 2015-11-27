@@ -9,7 +9,7 @@ class PlanAdmin(admin.ModelAdmin):
 
 @admin.register(Dueno)
 class DuenoAdmin(admin.ModelAdmin):
-	list_display = ['nombre', 'rut', 'email', 'direccion', 'comuna', 'phone', 'usuario', 'contrasena', 'Tipo_de_Usuario']
+	list_display = ['nombre', 'rut', 'email', 'direccion', 'comuna', 'phone', 'usuario']
 
 @admin.register(Mascota)
 class MascotaAdmin(admin.ModelAdmin):
@@ -29,7 +29,7 @@ class HistorialCompraAdmin(admin.ModelAdmin):
 
 @admin.register(Veterinario)
 class VeterinarioAdmin(admin.ModelAdmin):
-	list_display = ['nombre', 'especialidad', 'usuario', 'contrasena', 'Tipo_de_Usuario']
+	list_display = ['nombre', 'especialidad', 'usuario', 'Tipo_de_Usuario']
 
 @admin.register(Ficha)
 class FichaAdmin(admin.ModelAdmin):

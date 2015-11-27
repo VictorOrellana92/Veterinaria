@@ -42,7 +42,7 @@ INSTALLED_APPS = (
 
 from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = reverse_lazy('login')
-LOGIN_REDIRECT_URL = reverse_lazy('mostrar_mascota')
+LOGIN_REDIRECT_URL = reverse_lazy('base_redirect')
 LOGOUT_URL = reverse_lazy('logout')
 
 MIDDLEWARE_CLASSES = (
