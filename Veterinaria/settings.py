@@ -40,6 +40,11 @@ INSTALLED_APPS = (
     'central',
 )
 
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('mostrar_mascota')
+LOGOUT_URL = reverse_lazy('logout')
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -96,8 +101,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'mediafiles'))
+MEDIA_URL = os.getenv('MEDIA_URL', '/media/')
+
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__),'static',),)

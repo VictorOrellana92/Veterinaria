@@ -1,0 +1,68 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<title>Bienvenido</title>
+	</head>	
+
+	<body>
+
+	{%if user.is_authenticated %}
+		Bienvenido {{user.username|capfirst}}
+
+		
+		<h1>Todos los animales ingresados</h1>
+			{% for i in mascota_list%}
+				<p>{{i.nombre}}, {{i.dueno}}</p>
+				
+			{%endfor%}
+
+	{%else%}
+		Porfavor reingresa
+	{%endif%}
+
+	</body>
+</html> -->
+
+<html>
+	<head>
+	{% load static from staticfiles %}
+			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+		<title>Ver mascotas</title>
+	</head>
+	<body>
+		{%if user.is_authenticated %}
+			<div id="menu-wrapper">
+				<ul id="hmenu">
+					<p>Bienvenido {{user.username|capfirst}}</p>
+					<a id="cerrar" href="/cerrar">Salir</a>
+					<li><a href="/inicio">Inicio</li>
+					<li><a href="#">Servicios</a>
+						<ul class="sub-menu">
+							<li><a href="#">Mascotas activas</a></li>
+							<li><a href="#">Historial mascotas</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Portafolio</a>
+						<ul class="sub-menu">
+							<li><a href="#">Contactanos</a></li>
+							<li><a href="#">Urgencias</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Contacto</a></li>		
+				</ul>	
+			</div>
+			inicio
+		{%else%}
+			Porfavor reingresa
+		{%endif%}
+	</body>
+
+</html>
+
+
+
+
+
+
+
+

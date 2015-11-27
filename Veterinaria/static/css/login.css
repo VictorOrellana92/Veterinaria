@@ -1,0 +1,48 @@
+#login {
+			background-color: #f0f0f0;
+			width: 440px;
+			height: 380px;
+			border: 1px solid white;
+			margin: 100px auto;
+			padding: 20px;
+			border-radius: 6px;
+
+		}
+
+		h1, h2 {
+			font-family: arial;
+			color: #0080ff;
+			margin: 8px 40%;
+			margin-bottom: 10px;
+		}
+
+		body {
+			background-color: #2E9AFE;
+		}
+
+		input[type=texto],input[type=password]{
+			margin:0 0 2em 0;
+			width: 400px;
+			border: 0px;
+			padding: 2em;
+			border-radius: 3px;
+		}
+
+		input[type=submit]{
+			padding: 2em;
+			background-color: #0080ff;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-family: arial black;
+			font-size: 12px;
+			border-radius: 5px;
+			margin: 1em 0%;
+			width: 440px;
+		}
+
+		p {
+			margin: 1em 30%;
+			font-family:arial; 
+			/*border-bottom: true;*/
+		}
