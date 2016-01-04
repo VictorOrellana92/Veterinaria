@@ -1,9 +1,9 @@
-{%if user.is_authenticated %}
-	<html>
+
+<html>
 	<head>
 	{% load static from staticfiles %}
 			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-		<title>Ver mascotas</title>
+		<title>Nueva Atencion</title>
 	</head>
 	<body>
 		{%if user.is_authenticated %}
@@ -34,39 +34,32 @@
 					<li><a href="#">Contacto</a></li>		
 				</ul>	
 			</div>
-			Logeado
+
+			<form action="." method="POST"  class="pure-form pure-form-aligned">
+ 
+ 				<div class="pure-control-group">
+            		<fieldset>
+   						<legend>Nueva Atencion</legend>
+  							{% csrf_token %}<!-- variable para evitar que copien, es para seguridad -->
+							{{ form  }}
+ 					</fieldset>
+					<br>
+					<input type="submit" value="Enviar">
+ 				</div>
+			</form>
+
+			
 		{%else%}
 			Porfavor reingresa
 		{%endif%}
 	</body>
 
-	</html>
+</html>
 
-{%else%}
-	<!DOCTYPE html>
-		<html>
-		<head>
-			{% load static from staticfiles %}
-				<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
-			<title>Bienvenido</title>
-			
-		</head>
-		<body>
 
-				<div id="login">
-					<h1>Login</h1>
-					<form method="POST">
-						{% csrf_token %}
-						{{user.username}}
-						<input type="texto" name="username" autofocus placeholder="Ingrese nombre"></input>
-						<input type="password" name="password" placeholder="Ingrese contraseña"></input>
-						<input type="submit" name="aceptar" value="Login"  ></input>
-						<p>
-							<a href="">Olvido su contraseña?</a>
-						</p>
-					</form>
-				</div>
-		</body>
-		</html>
-{%endif%}
+
+
+
+
+

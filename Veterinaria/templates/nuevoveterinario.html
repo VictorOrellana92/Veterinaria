@@ -3,7 +3,7 @@
 	<head>
 	{% load static from staticfiles %}
 			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-		<title>Ver mascotas</title>
+		<title>Nuevo Veterinario</title>
 	</head>
 	<body>
 		{%if user.is_authenticated %}
@@ -34,7 +34,16 @@
 					<li><a href="#">Contacto</a></li>		
 				</ul>	
 			</div>
-			Logeado
+				<form action="." method="POST"  class="pure-form pure-form-aligned">
+				 <fieldset>
+				   <legend>Nuevo Veterinario</legend>
+				  	{% csrf_token %}<!-- variable para evitar que copien, es para seguridad -->
+					{{ form  }}
+				 </fieldset>
+				<br>
+				<input type="submit" value="Enviar">
+				 
+				</form>
 		{%else%}
 			Porfavor reingresa
 		{%endif%}

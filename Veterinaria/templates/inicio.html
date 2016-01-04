@@ -1,33 +1,12 @@
-<!-- <!DOCTYPE html>
-<html>
-	<head>
-		<title>Bienvenido</title>
-	</head>	
-
-	<body>
-
-	{%if user.is_authenticated %}
-		Bienvenido {{user.username|capfirst}}
-
-		
-		<h1>Todos los animales ingresados</h1>
-			{% for i in mascota_list%}
-				<p>{{i.nombre}}, {{i.dueno}}</p> -->
-				
-<!-- 			{%endfor%}
-
-	{%else%}
-		Porfavor reingresa
-	{%endif%}
-
-	</body>
-</html> --> 
-
+{%if user.is_authenticated %}
 <html>
 	<head>
 	{% load static from staticfiles %}
 			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-		<title>Ver mascotas</title>
+			<link rel="stylesheet" type="text/css" href="{% static 'css/font.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
+
+		<title>Inicio</title>
 	</head>
 	<body>
 		{%if user.is_authenticated %}
@@ -36,28 +15,91 @@
 					<p>Bienvenido {{user.username|capfirst}}</p>
 					<a id="cerrar" href="/cerrar">Salir</a>
 					<li><a href="/inicio">Inicio</li>
-					<li><a href="#">Servicios</a>
+					<li><a href="/MostrarTodasLasMascotas">Servicios</a>
 						<ul class="sub-menu">
-							<li><a href="#">Mascotas activas</a></li>
-							<li><a href="#">Historial mascotas</a></li>
+							<li><a href="/MostrarTodasLasMascotas">Ver Mascotas</a></li>
+							<li><a href="/nuevamascota">Nueva Mascota</a></li>
+							<li><a href="/mostrarduenos">Ver Dueños</a></li>
+							<li><a href="/nuevoDueno">Nuevo Dueño</a></li>
+							<li><a href="/mostrarveterinario">Ver Veterinarios</a></li>
+							<li><a href="/nuevoveterinario">Nuevo Veterinario</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Portafolio</a>
 						<ul class="sub-menu">
-							<li><a href="#">Contactanos</a></li>
-							<li><a href="#">Urgencias</a></li>
+							<li><a href="/mostrarFichas">Ver Fichas</a></li>
+							<li><a href="/nuevaFicha">Nueva Ficha</a></li>
+							<li><a href="/mostrarAtenciones">Ver Atenciones</a></li>
+							<li><a href="/nuevaAtencion">Nueva Atencion</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Contacto</a></li>		
 				</ul>	
 			</div>
-			inicio
+
+		<div id= "main2" class="main">
+	        <div class="slides">
+	          <img src="{% static 'img/slider-3.jpg' %}" alt="">
+	          <img src="{% static 'img/slider-2.jpg' %}" alt="">
+	          <img src="{% static 'img/slider-1.jpg' %}" alt="">
+	        </div>
+   	    </div>
+
+   	    	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	   		<script type="text/javascript" src="{% static 'js/jquery.slides.js' %}"></script>
+	   		<script type="text/javascript" src="{% static 'js/jquery.slides.min.js' %}"></script>
+		    
+		    <script>
+				 $(function(){
+				  $(".slides").slidesjs({
+				    play: {
+
+				      effect: "slide",
+				      interval: 3000,
+				      auto: true,
+				      swap: true,
+				      pauseOnHover: false,
+				      restartDelay: 2500
+				    		}
+				 					 });
+								});
+		    </script>
+			
 		{%else%}
 			Porfavor reingresa
 		{%endif%}
 	</body>
 
 </html>
+
+{%else%}
+	<!DOCTYPE html>
+		<html>
+		<head>
+			{% load static from staticfiles %}
+				<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+			<title>Bienvenido</title>
+			
+		</head>
+		<body>
+
+				<div id="login">
+					<h1>Login</h1>
+					<form method="POST">
+						{% csrf_token %}
+						{{user.username}}
+						<input type="texto" name="username" autofocus placeholder="Ingrese nombre"></input>
+						<input type="password" name="password" placeholder="Ingrese contraseña"></input>
+						<input type="submit" name="aceptar" value="Login"  ></input>
+						<p>
+							<a href="">Olvido su contraseña?</a>
+						</p>
+					</form>
+				</div>
+		</body>
+		</html>
+{%endif%}
 
 
 

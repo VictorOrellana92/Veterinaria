@@ -1,16 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Nueva mascota</title>
-</head>
-<body>
-	<form action="." method="POST">
-		{% csrf_token %} <!-- variable para evitar que copien, es para seguridad -->
-		{# crea todo el form #}
-		{{ form }} 
-		<input type="submit" value="Enviar">
-		
-	</form>
-</body>
+<html>
+	<head>
+	{% load static from staticfiles %}
+			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+		<title>Nueva mascotas</title>
+	</head>
+	<body>
+		{%if user.is_authenticated %}
+			<div id="menu-wrapper">
+				<ul id="hmenu">
+					<p>Bienvenido {{user.username|capfirst}}</p>
+					<a id="cerrar" href="/cerrar">Salir</a>
+					<li><a href="/inicio">Inicio</li>
+					<li><a href="/MostrarTodasLasMascotas">Servicios</a>
+						<ul class="sub-menu">
+							<li><a href="/MostrarTodasLasMascotas">Ver Mascotas</a></li>
+							<li><a href="/nuevamascota">Nueva Mascota</a></li>
+							<li><a href="/mostrarduenos">Ver Dueños</a></li>
+							<li><a href="/nuevoDueno">Nuevo Dueño</a></li>
+							<li><a href="/mostrarveterinario">Ver Veterinarios</a></li>
+							<li><a href="/nuevoveterinario">Nuevo Veterinario</a></li>
+
+						</ul>
+					</li>
+					<li><a href="#">Portafolio</a>
+						<ul class="sub-menu">
+							<li><a href="/mostrarFichas">Ver Fichas</a></li>
+							<li><a href="/nuevaFicha">Nueva Ficha</a></li>
+							<li><a href="/mostrarAtenciones">Ver Atenciones</a></li>
+							<li><a href="/nuevaAtencion">Nueva Atencion</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Contacto</a></li>		
+				</ul>	
+			</div>
+			<form action="." method="POST"  class="pure-form pure-form-aligned">
+ 
+ <div class="pure-control-group">
+            <fieldset>
+   <legend>Nueva Mascota</legend>
+  {% csrf_token %}<!-- variable para evitar que copien, es para seguridad -->
+{{ form  }}
+ </fieldset>
+<br>
+<input type="submit" value="Enviar">
+ 
+</form>
+			
+		{%else%}
+			Porfavor reingresa
+		{%endif%}
+	</body>
+
+
+
 </html>

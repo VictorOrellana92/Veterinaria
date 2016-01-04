@@ -61,6 +61,7 @@ class OrdenCompra(models.Model):
 
 class HistorialCompra(models.Model):
 	numero_compra = models.ForeignKey('OrdenCompra')
+	gusto_compra = models.BooleanField()
 
 	def __unicode__(self):
 		return self.numero_compra
@@ -94,4 +95,4 @@ class Atencion(models.Model):
 	diagnostico = models.CharField(max_length=20)
 
 	def __unicode__(self):
-		return self.ficha
+		return unicode(self.ficha)

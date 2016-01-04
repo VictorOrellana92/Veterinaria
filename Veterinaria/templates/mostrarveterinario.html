@@ -3,7 +3,7 @@
 	<head>
 	{% load static from staticfiles %}
 			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-		<title>Ver mascotas</title>
+		<title>Ver Veterinarios</title>
 	</head>
 	<body>
 		{%if user.is_authenticated %}
@@ -34,7 +34,24 @@
 					<li><a href="#">Contacto</a></li>		
 				</ul>	
 			</div>
-			Logeado
+			<h1>Listado de Todos los Veterinarios</h2>
+					<table border="1px" cellpadding="20px">
+					
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>especialidad</th>
+							<th>Tipo_de_Usuario</th>
+						</tr>
+							{% for i in veterinario_list %}
+						<tr>
+							<td>{{i.id}}</td>
+							<td>{{i.nombre}}</td>
+							<td>{{i.especialidad}}</td>
+							<td>{{i.Tipo_de_Usuario}}</td>
+						</tr>
+							{% endfor %}
+					</table>
 		{%else%}
 			Porfavor reingresa
 		{%endif%}

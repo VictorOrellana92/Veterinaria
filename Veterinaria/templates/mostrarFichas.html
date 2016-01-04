@@ -1,9 +1,9 @@
-{%if user.is_authenticated %}
-	<html>
+
+<html>
 	<head>
 	{% load static from staticfiles %}
 			<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-		<title>Ver mascotas</title>
+		<title>Mostrar Fichas</title>
 	</head>
 	<body>
 		{%if user.is_authenticated %}
@@ -34,39 +34,39 @@
 					<li><a href="#">Contacto</a></li>		
 				</ul>	
 			</div>
-			Logeado
+
+			<h1>Listado de Todas las Fichas</h2>
+					<table border="1px" cellpadding="20px">
+					
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Clinica</th>
+							<th>Amo</th>
+							<th>Creacion</th>
+						</tr>
+							{% for i in ficha_list %}
+						<tr>
+							<td>{{i.id}}</td>
+							<td>{{i.nombre}}</td>
+							<td>{{i.clinica}}</td>
+							<td>{{i.amo}}</td>
+							<td>{{i.creacion}}</td>
+						</tr>
+							{% endfor %}
+					</table>
+			
 		{%else%}
 			Porfavor reingresa
 		{%endif%}
 	</body>
 
-	</html>
+</html>
 
-{%else%}
-	<!DOCTYPE html>
-		<html>
-		<head>
-			{% load static from staticfiles %}
-				<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
-			<title>Bienvenido</title>
-			
-		</head>
-		<body>
 
-				<div id="login">
-					<h1>Login</h1>
-					<form method="POST">
-						{% csrf_token %}
-						{{user.username}}
-						<input type="texto" name="username" autofocus placeholder="Ingrese nombre"></input>
-						<input type="password" name="password" placeholder="Ingrese contraseña"></input>
-						<input type="submit" name="aceptar" value="Login"  ></input>
-						<p>
-							<a href="">Olvido su contraseña?</a>
-						</p>
-					</form>
-				</div>
-		</body>
-		</html>
-{%endif%}
+
+
+
+
+
